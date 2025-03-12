@@ -9,6 +9,10 @@ TagManager:
   - Legs
   - Body
   - Hitbox
+  - Combine
+  - MagGlass
+  - TableTop
+  - Craftable
   layers:
   - Default
   - TransparentFX

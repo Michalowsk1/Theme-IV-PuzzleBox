@@ -11,10 +11,15 @@ public class Inspecting : MonoBehaviour
 
     [Header("GameObjects")]
     [SerializeField] GameObject magnifyingGlass;
+    [SerializeField] GameObject TablemagnifyingGlass;
+
+    [Header("Inspecting")]
     [SerializeField] GameObject InspectHead;
     [SerializeField] GameObject InspectTail;
     [SerializeField] GameObject InspectBody;
     [SerializeField] GameObject InspectLegs;
+    [SerializeField] GameObject equipMagGlass;
+    [SerializeField] GameObject equipPetriDish;
 
     [Header("HitBoxes")]
     [SerializeField] GameObject legs;
@@ -34,13 +39,15 @@ public class Inspecting : MonoBehaviour
     string LegsInjury;
 
     public static string Symptoms;
+    private bool hand;
     int count;
+    public Transform Arm;
     // Start is called before the first frame update
     void Start()
     {
         DictionaryScript = GetComponent<Symptomdictionary>();
-        inspect = false;
-        InspectBody.SetActive(false);   InspectHead.SetActive(false);   InspectLegs.SetActive(false);   InspectTail.SetActive(false);
+        inspect = false;  hand = false;
+        InspectBody.SetActive(false);   InspectHead.SetActive(false);   InspectLegs.SetActive(false);   InspectTail.SetActive(false); equipMagGlass.SetActive(false); equipPetriDish.SetActive(false);
         legs.SetActive(true);   head.SetActive(true);   body.SetActive(true); tail.SetActive(true);
     }
 
@@ -48,7 +55,8 @@ public class Inspecting : MonoBehaviour
     void Update()
     {
         EquipMagnifyingGlass();
-        InspectingMode();
+        SymptomList();
+        PickingUpItem();
 
         if (inspect)
         {
@@ -56,18 +64,8 @@ public class Inspecting : MonoBehaviour
         }
         else
         { }
-        SymptomList();
     }
 
-    void InspectingMode()
-    {
-
-        if (inspect)
-        {
-            magnifyingGlass.SetActive(true);
-        }
-        else magnifyingGlass.SetActive(false);
-    }
 
     void InspectSymptoms()
     {
@@ -136,16 +134,64 @@ public class Inspecting : MonoBehaviour
 
     void EquipMagnifyingGlass()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        RaycastHit hitInfo;
+        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+
+        if (Physics.Raycast(ray, out hitInfo, 2))
         {
-            count++;
+            if (hitInfo.collider.tag == "MagGlass")
+            {
+                equipMagGlass.SetActive(true);
+                if (leftMouseInput() && hand == false)
+                {
+                    TablemagnifyingGlass.SetActive(false);
+                    magnifyingGlass.SetActive(true);
+                    inspect = true;
+                    hand = true;
+                }
+            }
+            else { equipMagGlass.SetActive(false); }
+
+            if(hitInfo.collider.tag == "TableTop" && leftMouseInput())
+            {
+                magnifyingGlass.SetActive(false);
+                TablemagnifyingGlass.SetActive(true);
+                inspect = false;
+                hand = false;
+            }
         }
-        if (count % 2 == 1)
-        {
-            inspect = true;
-        }
-        else inspect = false;
     }
+
+    void PickingUpItem()
+    {
+        RaycastHit hitInfo;
+        Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+
+        if (Physics.Raycast(ray, out hitInfo, distance))
+        {
+            if(hitInfo.collider.tag == "Craftable")
+            {
+                equipPetriDish.SetActive(true);
+                if (Input.GetKey(KeyCode.Mouse0) && hand == false)
+                {
+                    equipPetriDish.SetActive(false);
+                    hand = true;
+                    pickedUp.Holding = true;
+                    if (hand)
+                    {
+                        hitInfo.collider.gameObject.transform.position = Arm.position;
+                    }
+                }
+                pickedUp.Holding = false;
+                hand = false;
+            }
+            else if(hitInfo.collider.tag != "Craftable")
+            {
+                equipPetriDish.SetActive(false);
+            }
+        }
+    }
+        
 
     private bool leftMouseInput()
     {

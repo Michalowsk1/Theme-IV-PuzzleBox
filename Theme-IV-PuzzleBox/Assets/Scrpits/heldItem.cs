@@ -34,5 +34,10 @@ public class heldItem : MonoBehaviour
         {
             Item.transform.position = Spawn.position;
         }
+
+        if(collision.gameObject.tag == "Craft")
+        {
+            Destroy(gameObject);
+        }
     }
 }

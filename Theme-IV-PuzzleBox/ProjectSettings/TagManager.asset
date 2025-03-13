@@ -17,6 +17,7 @@ TagManager:
   - GreenPetri
   - BrownPetri
   - PurplePetri
+  - Craft
   layers:
   - Default
   - TransparentFX

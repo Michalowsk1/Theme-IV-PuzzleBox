@@ -4894,6 +4894,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cyanPotion
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7f727acdc9e343f46993b61976679df0, type: 3}
+      propertyPath: m_TagString
+      value: CyanPotion
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

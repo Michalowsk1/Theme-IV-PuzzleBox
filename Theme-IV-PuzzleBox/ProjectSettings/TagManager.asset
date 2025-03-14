@@ -4,12 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Tail
-  - Hitbox
-  - Combine
   - MagGlass
   - TableTop
-  - Craftable
   - Kill
   - RedPetri
   - OrangePetri
@@ -18,6 +14,7 @@ TagManager:
   - BrownPetri
   - PurplePetri
   - Craft
+  - YellowPotion
   layers:
   - Default
   - TransparentFX

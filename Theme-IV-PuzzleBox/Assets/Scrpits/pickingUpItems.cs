@@ -23,8 +23,12 @@ public class pickingUpItems : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PickingUpItem();
+        if (BodyChange.Human == true)
+        {
+            PickingUpItem();
+        }
         BodyChanger();
+        EndingGame();
     }
 
 
@@ -80,6 +84,7 @@ public class pickingUpItems : MonoBehaviour
                 {
                     BodyChange.Spider = true;
                     DrinkPotionText.SetActive(false);
+                    Destroy(hitInfo.collider.gameObject);
                 }
             }
 
@@ -92,6 +97,7 @@ public class pickingUpItems : MonoBehaviour
                 {
                     BodyChange.Bird = true;
                     DrinkPotionText.SetActive(false);
+                    Destroy(hitInfo.collider.gameObject);
                 }
             }
 
@@ -110,6 +116,21 @@ public class pickingUpItems : MonoBehaviour
         }
     }
 
+    void EndingGame()
+    {
+        RaycastHit hitInfo;
+        Ray ray = new Ray(PlayerCam.transform.position, PlayerCam.transform.forward);
+        Debug.DrawRay(ray.origin, ray.direction * distance);
+
+        if (Physics.Raycast(ray, out hitInfo, distance))
+        {
+            if (finalCount.FinalDoor == true && hitInfo.collider.tag == "Door")
+            {
+                Debug.Log("Finished");
+            }
+
+        }
+    }
 
     private bool leftMouseInput()
     {

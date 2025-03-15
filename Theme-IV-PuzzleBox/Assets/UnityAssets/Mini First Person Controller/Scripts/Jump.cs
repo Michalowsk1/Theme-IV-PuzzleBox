@@ -1,8 +1,13 @@
-﻿using Unity.VisualScripting;
+﻿using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Jump : MonoBehaviour
 {
+
+    //*** CODE FROM HERE
+
+
     Rigidbody rigidbody;
     public float jumpStrength = 2;
     public event System.Action Jumped;
@@ -25,14 +30,17 @@ public class Jump : MonoBehaviour
 
     void LateUpdate()
     {
-        if (BodyChange.Human)
+        if (BodyChange.Human) //NOT INCLUDING
         {
+
             // Jump when the Jump button is pressed and we are on the ground.
             if (Input.GetButtonDown("Jump") && (!groundCheck || groundCheck.isGrounded))
             {
                 rigidbody.AddForce(Vector3.up * 100 * jumpStrength);
                 Jumped?.Invoke();
             }
+
+            ///*** TO HERE REFERNCED IN README FILE UNDER MOVEMENT TITLE
         }
 
         if (BodyChange.Bird)
@@ -58,6 +66,24 @@ public class Jump : MonoBehaviour
             {
                 rigidbody.AddForce(Vector3.up * 10 * jumpStrength);
                 jumpStrength = 0;
+            }
+        }
+    }
+
+    IEnumerator CeilingHit()
+    {
+        yield return new WaitForSeconds(2);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(BodyChange.Bird)
+        {
+            if(collision.gameObject.tag == "Ceiling")
+            {
+                jumpStrength = 0;
+                StartCoroutine(CeilingHit());
+                jumpStrength = 2;
             }
         }
     }

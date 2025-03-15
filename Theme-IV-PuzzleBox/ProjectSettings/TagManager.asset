@@ -15,6 +15,14 @@ TagManager:
   - PurplePetri
   - Craft
   - YellowPotion
+  - CyanPotion
+  - PinkPotion
+  - Fake
+  - Worm
+  - Door
+  - Wall
+  - Bird
+  - Ceiling
   layers:
   - Default
   - TransparentFX

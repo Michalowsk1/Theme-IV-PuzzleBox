@@ -46,6 +46,9 @@ public class BodyChange : MonoBehaviour
         if (Human)
         {
             human.SetActive(true);
+            spider.SetActive(false);
+            bird.SetActive(false);
+            rat.SetActive (false);
             
         }
 

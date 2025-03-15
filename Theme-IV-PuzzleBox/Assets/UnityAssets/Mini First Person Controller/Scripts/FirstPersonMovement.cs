@@ -16,7 +16,6 @@ public class FirstPersonMovement : MonoBehaviour
     public List<System.Func<float>> speedOverrides = new List<System.Func<float>>();
 
 
-
     void Awake()
     {
         // Get the rigidbody on this.
@@ -25,7 +24,7 @@ public class FirstPersonMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        
+        //***CODE FROM HERE 
             speed = 5;
             // Update IsRunning from input.
             IsRunning = canRun && Input.GetKey(runningKey);
@@ -42,7 +41,7 @@ public class FirstPersonMovement : MonoBehaviour
 
             // Apply movement.
             rigidbody.velocity = transform.rotation * new Vector3(targetVelocity.x, rigidbody.velocity.y, targetVelocity.y);
-        
+        //** TO HERE REFERNCED IN README FILE UNDER MOVEMENT TITLE
 
 
         if(BodyChange.Rat)

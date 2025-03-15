@@ -8,7 +8,7 @@ public class Jump : MonoBehaviour
     //*** CODE FROM HERE
 
 
-    Rigidbody rigidbody;
+    [SerializeField] Rigidbody rigidbody;
     public float jumpStrength = 2;
     public event System.Action Jumped;
 
@@ -53,9 +53,10 @@ public class Jump : MonoBehaviour
 
         if (BodyChange.Spider)
         {
+            
             if (Input.GetKey(KeyCode.Space))
             {
-                jumpStrength = jumpStrength + 0.1f;
+                jumpStrength = jumpStrength + 0.2f;
 
                 if(jumpStrength > 25)
                 {

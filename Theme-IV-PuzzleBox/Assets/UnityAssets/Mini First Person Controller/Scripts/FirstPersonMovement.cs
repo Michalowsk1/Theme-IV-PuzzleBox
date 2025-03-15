@@ -48,5 +48,10 @@ public class FirstPersonMovement : MonoBehaviour
         {
             speed = 10;
         }
+
+        if (BodyChange.Spider)
+        {
+            speed = 1;
+        }
     }
 }

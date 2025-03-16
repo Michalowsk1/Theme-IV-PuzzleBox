@@ -23,6 +23,7 @@ TagManager:
   - Wall
   - Bird
   - Ceiling
+  - Vent
   layers:
   - Default
   - TransparentFX

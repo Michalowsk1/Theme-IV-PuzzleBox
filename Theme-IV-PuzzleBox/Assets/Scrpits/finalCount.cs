@@ -29,12 +29,12 @@ public class finalCount : MonoBehaviour
 
         if (PuzzleSolved >= 2)
         {
-            BottomDoor.SetActive(true);
+            LeftDoor.SetActive(true);
         }
 
         if (PuzzleSolved >= 3)
         {
-            BottomDoor.SetActive(true);
+            RightDoor.SetActive(true);
             FinalDoor = true;
         }
 

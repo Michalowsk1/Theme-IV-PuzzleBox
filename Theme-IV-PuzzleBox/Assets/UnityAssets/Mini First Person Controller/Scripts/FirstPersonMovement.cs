@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class FirstPersonMovement : MonoBehaviour
 {
+
+
+    //***CODE FROM HERE 
     public float speed;
 
     [Header("Running")]
@@ -24,29 +27,30 @@ public class FirstPersonMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        //***CODE FROM HERE 
-            speed = 5;
-            // Update IsRunning from input.
-            IsRunning = canRun && Input.GetKey(runningKey);
+        speed = 5;
+        // Update IsRunning from input.
+        IsRunning = canRun && Input.GetKey(runningKey);
 
-            // Get targetMovingSpeed.
-            float targetMovingSpeed = IsRunning ? runSpeed : speed;
-            if (speedOverrides.Count > 0)
-            {
-                targetMovingSpeed = speedOverrides[speedOverrides.Count - 1]();
-            }
+        // Get targetMovingSpeed.
+        float targetMovingSpeed = IsRunning ? runSpeed : speed;
+        if (speedOverrides.Count > 0)
+        {
+            targetMovingSpeed = speedOverrides[speedOverrides.Count - 1]();
+        }
 
-            // Get targetVelocity from input.
-            Vector2 targetVelocity = new Vector2(Input.GetAxis("Horizontal") * targetMovingSpeed, Input.GetAxis("Vertical") * targetMovingSpeed);
+        // Get targetVelocity from input.
+        Vector2 targetVelocity = new Vector2(Input.GetAxis("Horizontal") * targetMovingSpeed, Input.GetAxis("Vertical") * targetMovingSpeed);
 
-            // Apply movement.
-            rigidbody.velocity = transform.rotation * new Vector3(targetVelocity.x, rigidbody.velocity.y, targetVelocity.y);
+        // Apply movement.
+        rigidbody.velocity = transform.rotation * new Vector3(targetVelocity.x, rigidbody.velocity.y, targetVelocity.y);
         //** TO HERE REFERNCED IN README FILE UNDER MOVEMENT TITLE
 
 
-        if(BodyChange.Rat)
+        if (BodyChange.Rat)
         {
-            speed = 10;
+
+
+            
         }
 
         if (BodyChange.Spider)

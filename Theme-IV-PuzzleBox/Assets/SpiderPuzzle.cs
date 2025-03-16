@@ -21,14 +21,14 @@ public class SpiderPuzzle : MonoBehaviour
     {
         if (BodyChange.Spider)
         {
-            if (collision.gameObject.tag == "Vent")
-            {
-                spiderBody.useGravity = false;
-            }
-            if (collision.gameObject.tag == "Untagged")
-            {
-                spiderBody.useGravity = true;
-            }
+            //if (collision.gameObject.tag == "Vent") //WALL CAWLING FAILED
+            //{
+            //    spiderBody.useGravity = false;
+            //}
+            //if (collision.gameObject.tag == "Untagged")
+            //{
+            //    spiderBody.useGravity = true;
+            //}
 
             if(collision.gameObject.tag == "Finish")
             {

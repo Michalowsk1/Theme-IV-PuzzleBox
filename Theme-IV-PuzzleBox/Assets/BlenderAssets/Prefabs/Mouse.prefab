@@ -116,9 +116,10 @@ GameObject:
   - component: {fileID: 3505577829351599396}
   - component: {fileID: -8547047005778391964}
   - component: {fileID: 3310936864187177948}
+  - component: {fileID: 2423965699589958958}
   m_Layer: 0
   m_Name: Mouse
-  m_TagString: Untagged
+  m_TagString: Mouse
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,7 +133,7 @@ Transform:
   m_GameObject: {fileID: 2792279307540766867}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.784, y: 37.194, z: -2.6109}
+  m_LocalPosition: {x: 4.279233, y: 0.036922976, z: -1.1432546}
   m_LocalScale: {x: 0.64645, y: 0.64645, z: 0.64645}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -176,6 +177,27 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 1
+--- !u!65 &2423965699589958958
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2792279307540766867}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.25539574, y: 0.17141265, z: 0.2545712}
+  m_Center: {x: -0.023677368, y: 0.031534523, z: 0.01656674}
 --- !u!1 &5026847919054844703
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,6 @@ using UnityEngine;
 public class FirstPersonMovement : MonoBehaviour
 {
 
-
     //***CODE FROM HERE 
     public float speed;
 

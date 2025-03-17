@@ -110,6 +110,7 @@ public class pickingUpItems : MonoBehaviour
                 {
                     BodyChange.Rat = true;
                     DrinkPotionText.SetActive(false);
+                    Destroy(hitInfo.collider.gameObject);
                 }
             }
             DrinkPotionText.SetActive(false);

@@ -17,10 +17,12 @@ public class RatPuzzle : MonoBehaviour
     [SerializeField] GameObject staminaBar;
     [SerializeField] GameObject BackstaminaBar;
     [SerializeField] Rigidbody rat;
+
     public bool staminaDrain;
 
     int distance = 2;
     public int timer;
+    public static int mouseCount;
 
     public RectTransform rectTransform;
     // Start is called before the first frame update
@@ -30,7 +32,6 @@ public class RatPuzzle : MonoBehaviour
         staminaBar.SetActive(false);
         BackstaminaBar.SetActive(false);
         DigText.SetActive(false);
-        Particles.SetActive(false);
         BackstaminaBar.SetActive(false);
         staminaDrain = false;
         timer = 0;
@@ -49,12 +50,7 @@ public class RatPuzzle : MonoBehaviour
         Digging();
         RatStamina();
 
-        if (timer >= 1140)
-        {
-            timer = 0;
-        }
 
-        
     }
 
     void RatStamina()
@@ -111,22 +107,30 @@ public class RatPuzzle : MonoBehaviour
             {
                 Debug.Log("HIT");
                 DigText.SetActive(true);
-                if (Input.GetKey(KeyCode.Mouse0))
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
+                    hitInfo.collider.gameObject.transform.position = new Vector3(Dirt.transform.position.x, Dirt.transform.position.y - 0.01f, Dirt.transform.position.z);
                     DigText.SetActive(false);
-                    Particles.SetActive(true);
                     timer++;
-
-                    if (timer % 380 == 0)
-                    {
-                        Dirt.transform.position = new Vector2(Dirt.transform.position.x, Dirt.transform.position.y - 0.05f);
-                        DirtGround.digCount++;
-                    }
                 }
             }
             DigText.SetActive(false);
 
-        }
+            if (hitInfo.collider.tag == "Mouse")
+            {
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    mouseCount++;
+                    if (mouseCount == 2)
+                    {
+                        finalCount.PuzzleSolved++;
+                        BodyChange.Rat = false;
+                        BodyChange.Human = true;
+                    }
+                }
 
+            }
+
+        }
     }
 }

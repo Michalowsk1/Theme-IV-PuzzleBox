@@ -25,6 +25,7 @@ TagManager:
   - Ceiling
   - Vent
   - Dirt
+  - Mouse
   layers:
   - Default
   - TransparentFX

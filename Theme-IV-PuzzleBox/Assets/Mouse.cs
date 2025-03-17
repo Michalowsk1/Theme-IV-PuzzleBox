@@ -8,6 +8,8 @@ using UnityEngine.UIElements;
 public class Mouse : MonoBehaviour
 {
     Vector3 destination;
+    Vector3 Newdestination;
+    Vector3 MoveAway;
     float distance;
 
     [SerializeField] NavMeshAgent agent;
@@ -25,19 +27,12 @@ public class Mouse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        X = Random.Range(0, -9);
-        Z = Random.Range(0, -7);
 
-        agent.SetDestination(destination);
+        agent.SetDestination(MoveAway);
 
-        destination = new Vector3(X, gameObject.transform.position.y, Z);
+        MoveAway = agent.transform.position - player.transform.position;
 
-        distance = Vector3.Distance(agent.transform.position, destination);
+        transform.Translate(MoveAway.normalized * 1.5f * Time.deltaTime);
 
-        if(distance < 2)
-        {
-            X = Random.Range(-2, 5);
-            Z = Random.Range(-5, 0);
-        }
     }
 }

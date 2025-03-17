@@ -24,6 +24,7 @@ TagManager:
   - Bird
   - Ceiling
   - Vent
+  - Dirt
   layers:
   - Default
   - TransparentFX

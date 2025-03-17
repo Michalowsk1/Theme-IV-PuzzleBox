@@ -9,6 +9,8 @@ public class BodyChange : MonoBehaviour
     [SerializeField] GameObject spider;
     [SerializeField] GameObject bird;
     [SerializeField] GameObject rat;
+    [SerializeField] GameObject staminaBar;
+    [SerializeField] GameObject BackstaminaBar;
     public static bool Human;
     public static bool Spider;
     public static bool Bird;
@@ -20,6 +22,8 @@ public class BodyChange : MonoBehaviour
         spider.SetActive(false);
         bird.SetActive(false);
         rat.SetActive(false);
+        staminaBar.SetActive(false);
+        BackstaminaBar.SetActive(false);
 
         Human = true;
         Spider = false;

@@ -8,6 +8,7 @@ public class pickingUpItems : MonoBehaviour
     [SerializeField] GameObject PlayerCam;
     [SerializeField] GameObject EquipText;
     [SerializeField] GameObject DrinkPotionText;
+    [SerializeField] GameObject Timeline;
     int distance = 3;
     public static bool hand = false;
     public Transform Arm;
@@ -18,6 +19,7 @@ public class pickingUpItems : MonoBehaviour
     {
         DrinkPotionText.SetActive(false);
         EquipText.SetActive(false);
+        Timeline.SetActive(false);
     }
 
     // Update is called once per frame
@@ -114,7 +116,14 @@ public class pickingUpItems : MonoBehaviour
                 }
             }
             DrinkPotionText.SetActive(false);
+
+            if(hitInfo.collider.tag == "Finish" &&  Input.GetKey(KeyCode.Mouse0))
+            {
+                Timeline.SetActive(true);
+            }
         }
+
+        
     }
 
     void EndingGame()
